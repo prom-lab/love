@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حب خاص - موقع الحب الرومانسي</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
+
+        <meta property="og:locale" content="ar_AR">
+    <meta property="og:site_name" content="حب خاص">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="حب خاص - موقع الحب الرومانسي">
+    <meta name="twitter:description" content="أنشئ صفحة حب رومانسية خاصة بك وأرسلها لمن تحب">
+    <meta name="twitter:image" content="https://www.yourdomain.com/images/twitter-image.jpg">
+    <meta name="twitter:site" content="@yourtwitterhandle">
+    
+    <!-- Additional Important Tags -->
+    <meta name="theme-color" content="#ff4d6d">
+    <link rel="canonical" href="https://www.yourdomain.com">
+    
+    <!-- Apple/IOS Specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    
+    <!-- Windows Specific -->
+    <meta name="msapplication-TileColor" content="#ff4d6d">
+    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "حب خاص",
+      "description": "موقع لإنشاء صفحات حب رومانسية وإرسالها للأحباب",
+      "url": "https://www.yourdomain.com",
+      "inLanguage": "ar",
+      "publisher": {
+        "@type": "Organization",
+        "name": "حب خاص",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.yourdomain.com/logo.png"
+        }
+      }
+    }
+    </script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+</head>
+<body>
+    <!-- خلفية القلوب المتحركة -->
+    <div class="hearts-background"></div>
+    
+    <!-- الشاشة الرئيسية -->
+    <div id="app" class="container">
+        <!-- صفحة الترحيب -->
+        <div id="welcomePage" class="page active">
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                <h1>حب خاص</h1>
+            </div>
+            <p class="subtitle">أنشئ صفحة حب خاصة بك وأرسلها لمن تحب</p>
+            
+            <div class="buttons-container">
+                <button id="loginBtn" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+                <button id="signupBtn" class="btn btn-secondary">
+                    <i class="fas fa-user-plus"></i> إنشاء حساب جديد
+                </button>
+                <div class="divider">
+                    <span>أو</span>
+                </div>
+                <p class="info-text">إذا وصلتك رسالة حب، اضغط على الرابط الذي أرسل إليك</p>
+            </div>
+        </div>
+        
+        <!-- صفحة تسجيل الدخول -->
+        <div id="loginPage" class="page">
+            <div class="back-btn" onclick="showPage('welcomePage')">
+                <i class="fas fa-arrow-right"></i> رجوع
+            </div>
+            <h2><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword"><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" id="loginPassword" required>
+                    <span class="toggle-password" onclick="togglePassword('loginPassword')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+            </form>
+            <p class="switch-page">ليس لديك حساب؟ <a href="#" onclick="showPage('signupPage')">أنشئ حساباً</a></p>
+        </div>
+        
+        <!-- صفحة إنشاء حساب -->
+        <div id="signupPage" class="page">
+            <div class="back-btn" onclick="showPage('welcomePage')">
+                <i class="fas fa-arrow-right"></i> رجوع
+            </div>
+            <h2><i class="fas fa-user-plus"></i> إنشاء حساب جديد</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName"><i class="fas fa-user"></i> اسمك</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword"><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" id="signupPassword" required minlength="6">
+                    <span class="toggle-password" onclick="togglePassword('signupPassword')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> إنشاء حساب
+                </button>
+            </form>
+            <p class="switch-page">لديك حساب بالفعل؟ <a href="#" onclick="showPage('loginPage')">سجل الدخول</a></p>
+        </div>
+        
+        <!-- صفحة إنشاء صفحة الحب -->
+        <div id="createPage" class="page">
+            <div class="progress-bar">
+                <div class="progress-step active">1</div>
+                <div class="progress-step">2</div>
+                <div class="progress-step">3</div>
+                <div class="progress-step">4</div>
+            </div>
+            
+            <!-- الخطوة 1: معلومات الحبيب -->
+            <div id="step1" class="creation-step active">
+                <h2><i class="fas fa-heart"></i> أنشئ صفحة حب خاصة بك</h2>
+                <form id="loverInfoForm">
+                    <div class="form-group">
+                        <label for="yourName"><i class="fas fa-user"></i> اسمك</label>
+                        <input type="text" id="yourName" required>
+                        <small>سيتم عرض هذا الاسم لحبيبتك</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="loverName"><i class="fas fa-heart"></i> اسم حبيبتك</label>
+                        <input type="text" id="loverName" required placeholder="أدخل اسم من تحب">
+                        <small>سيتم مناداتها بهذا الاسم في الصفحة</small>
+                    </div>
+                    <button type="button" onclick="nextStep(2)" class="btn btn-primary">
+                        التالي <i class="fas fa-arrow-left"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- الخطوة 2: اختيار الشعر -->
+            <div id="step2" class="creation-step">
+                <h2><i class="fas fa-pen-fancy"></i> اختر قصيدة لحبيبتك</h2>
+                <div class="poem-options">
+                    <div class="option-card" onclick="selectPoemOption('custom')">
+                        <i class="fas fa-edit"></i>
+                        <h3>أكتب قصيدتي بنفسي</h3>
+                        <p>اكتب كلمات من قلبك</p>
+                    </div>
+                    <div class="option-card" onclick="selectPoemOption('ready')">
+                        <i class="fas fa-book-open"></i>
+                        <h3>قصائد جاهزة</h3>
+                        <p>اختر من مجموعة قصائد رومانسية</p>
+                    </div>
+                    <div class="option-card" onclick="selectPoemOption('ai')">
+                        <i class="fas fa-robot"></i>
+                        <h3>الذكاء الاصطناعي</h3>
+                        <p>دع الذكاء الاصطناعي يكتب لك قصيدة</p>
+                    </div>
+                </div>
+                
+                <!-- إدخال الشعر المخصص -->
+                <div id="customPoemSection" class="hidden">
+                    <div class="form-group">
+                        <label for="customPoem"><i class="fas fa-pen"></i> اكتب قصيدتك</label>
+                        <textarea id="customPoem" rows="5" placeholder="اكتب هنا قصيدتك الرومانسية..."></textarea>
+                    </div>
+                    <div class="buttons-row">
+                        <button type="button" onclick="prevStep(1)" class="btn btn-secondary">
+                            <i class="fas fa-arrow-right"></i> رجوع
+                        </button>
+                        <button type="button" onclick="saveCustomPoem()" class="btn btn-primary">
+                            حفظ <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- اختيار شعر جاهز -->
+                <div id="readyPoemSection" class="hidden">
+                    <div class="form-group">
+                        <label><i class="fas fa-book"></i> اختر قصيدة</label>
+                        <div class="poems-list">
+                            <div class="poem-item" onclick="selectReadyPoem(this)">
+                                <h4>قصيدة الحب</h4>
+                                <p>في عينيكِ وجدتُ حبي وغرامي<br>وفي قلبكِ عشتُ أسعد أيامي<br>أنتِ النور الذي يضيء دربي<br>وحبي لكِ باقٍ بكلّ إحساسي</p>
+                            </div>
+                            <div class="poem-item" onclick="selectReadyPoem(this)">
+                                <h4>أنتِ حياتي</h4>
+                                <p>لا شيء في الدنيا يساوي لحظة معكِ<br>ولا أحد يُضاهي جمال روحكِ<br>أنتِ الحب الذي طالما حلمتُ به<br>وأنتِ النعمة التي أشكر ربي عليها</p>
+                            </div>
+                            <div class="poem-item" onclick="selectReadyPoem(this)">
+                                <h4>قصيدة الغرام</h4>
+                                <p>أحبكِ أكثر مما تتخيلين<br>وأجمل من كل ما ترين<br>قلبي يرفرف شوقاً إليكِ<br>وحبي لكِ لا يعرف الكلل</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons-row">
+                        <button type="button" onclick="prevStep(1)" class="btn btn-secondary">
+                            <i class="fas fa-arrow-right"></i> رجوع
+                        </button>
+                        <button type="button" onclick="saveReadyPoem()" class="btn btn-primary">
+                            حفظ <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- الذكاء الاصطناعي -->
+                <div id="aiPoemSection" class="hidden">
+                    <div class="form-group">
+                        <label><i class="fas fa-robot"></i> اكتب موضوع القصيدة</label>
+                        <input type="text" id="aiTopic" placeholder="مثال: حب، اشتياق، غرام...">
+                        <small>اكتب موضوعاً أو فكرة للقصيدة</small>
+                    </div>
+                    <div class="form-group">
+                        <label>طول القصيدة</label>
+                        <select id="aiLength">
+                            <option value="short">قصيرة (2-3 أسطر)</option>
+                            <option value="medium" selected>متوسطة (4-6 أسطر)</option>
+                            <option value="long">طويلة (7-10 أسطر)</option>
+                        </select>
+                    </div>
+                    <button type="button" onclick="generateAIPoem()" class="btn btn-primary" id="generatePoemBtn">
+                        <i class="fas fa-magic"></i> إنشاء قصيدة
+                    </button>
+                    
+                    <div id="aiResult" class="hidden">
+                        <div class="form-group">
+                            <label>القصيدة المولدة</label>
+                            <div class="ai-poem-result" id="generatedPoem"></div>
+                        </div>
+                        <div class="buttons-row">
+                            <button type="button" onclick="regeneratePoem()" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> إعادة توليد
+                            </button>
+                            <button type="button" onclick="saveAIPoem()" class="btn btn-primary">
+                                حفظ <i class="fas fa-save"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="buttons-row">
+                        <button type="button" onclick="prevStep(1)" class="btn btn-secondary">
+                            <i class="fas fa-arrow-right"></i> رجوع
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الخطوة 3: اختيار الهدية -->
+            <div id="step3" class="creation-step">
+                <h2><i class="fas fa-gift"></i> اختر هدية لحبيبتك</h2>
+                <div class="gift-options">
+                    <div class="option-card" onclick="selectGiftOption('song')">
+                        <i class="fas fa-music"></i>
+                        <h3>أغنية مفضلة</h3>
+                        <p>ارفق رابط أغنية مفضلة لها</p>
+                    </div>
+                    <div class="option-card" onclick="selectGiftOption('other')">
+                        <i class="fas fa-gift"></i>
+                        <h3>هدية أخرى</h3>
+                        <p>ورد، دبدوب، سلسلة، شاورما...</p>
+                    </div>
+                </div>
+                
+                <!-- اختيار أغنية -->
+                <div id="songSection" class="hidden">
+                    <div class="form-group">
+                        <label for="songUrl"><i class="fas fa-link"></i> رابط الأغنية</label>
+                        <input type="url" id="songUrl" placeholder="https://www.youtube.com/watch?v=...">
+                        <small>الصق رابط الأغنية من يوتيوب أو أي منصة أخرى</small>
+                    </div>
+                    <div class="buttons-row">
+                        <button type="button" onclick="prevStep(2)" class="btn btn-secondary">
+                            <i class="fas fa-arrow-right"></i> رجوع
+                        </button>
+                        <button type="button" onclick="saveSong()" class="btn btn-primary">
+                            حفظ <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- اختيار هدية أخرى -->
+                <div id="otherGiftSection" class="hidden">
+                    <div class="form-group">
+                        <label><i class="fas fa-gift"></i> اختر نوع الهدية</label>
+                        <div class="gift-types">
+                            <div class="gift-type" onclick="selectGiftType('rose')">
+                                <i class="fas fa-rose"></i>
+                                <span>ورد</span>
+                            </div>
+                            <div class="gift-type" onclick="selectGiftType('teddy')">
+                                <i class="fas fa-stuffed-toy"></i>
+                                <span>دبدوب</span>
+                            </div>
+                            <div class="gift-type" onclick="selectGiftType('necklace')">
+                                <i class="fas fa-gem"></i>
+                                <span>سلسلة</span>
+                            </div>
+                            <div class="gift-type" onclick="selectGiftType('shawarma')">
+                                <i class="fas fa-utensils"></i>
+                                <span>شاورما</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="giftMessage"><i class="fas fa-comment"></i> رسالة مع الهدية (اختياري)</label>
+                        <textarea id="giftMessage" rows="3" placeholder="اكتب رسالة حلوة مع هديتك..."></textarea>
+                    </div>
+                    <div class="buttons-row">
+                        <button type="button" onclick="prevStep(2)" class="btn btn-secondary">
+                            <i class="fas fa-arrow-right"></i> رجوع
+                        </button>
+                        <button type="button" onclick="saveGift()" class="btn btn-primary">
+                            حفظ <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الخطوة 4: إنهاء -->
+            <div id="step4" class="creation-step">
+                <h2><i class="fas fa-check-circle"></i> تم الإنشاء بنجاح!</h2>
+                <div class="success-message">
+                    <i class="fas fa-heart-circle-check"></i>
+                    <p>تم إنشاء صفحة الحب الخاصة بك بنجاح!</p>
+                    <p class="lover-name" id="finalLoverName"></p>
+                </div>
+                
+                <div class="share-section">
+                    <h3><i class="fas fa-share-alt"></i> شارك الرابط مع حبيبتك</h3>
+                    <div class="share-link">
+                        <input type="text" id="loveLink" readonly>
+                        <button onclick="copyLink()" class="btn btn-secondary">
+                            <i class="fas fa-copy"></i> نسخ
+                        </button>
+                    </div>
+                    <div class="share-buttons">
+                        <button onclick="shareWhatsApp()" class="btn whatsapp">
+                            <i class="fab fa-whatsapp"></i> واتساب
+                        </button>
+                        <button onclick="shareTelegram()" class="btn telegram">
+                            <i class="fab fa-telegram"></i> تليجرام
+                        </button>
+                        <button onclick="shareSMS()" class="btn sms">
+                            <i class="fas fa-sms"></i> رسالة
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="final-actions">
+                    <button onclick="viewPage()" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> معاينة الصفحة
+                    </button>
+                    <button onclick="createNew()" class="btn btn-secondary">
+                        <i class="fas fa-plus"></i> إنشاء صفحة جديدة
+                    </button>
+                    <button onclick="logout()" class="btn btn-logout">
+                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة الحب (للحبيبة) -->
+    <div id="lovePage" class="hidden">
+        <div class="love-container">
+            <!-- الصورة المتحركة -->
+            <div class="love-image" id="loveImage">
+                <img src="" alt="صورة حب" id="dynamicImage">
+            </div>
+            
+            <!-- المحادثة -->
+            <div class="conversation">
+                <!-- الرسائل ستضاف هنا ديناميكياً -->
+            </div>
+            
+            <!-- أزرار الرد -->
+            <div class="response-buttons">
+                <!-- أزرار الرد ستضاف هنا ديناميكياً -->
+            </div>
+        </div>
+        
+        <!-- تأثير القلوب عند الضغط -->
+        <div id="heartsContainer"></div>
+    </div>
+
+    <!-- تحميل Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>
